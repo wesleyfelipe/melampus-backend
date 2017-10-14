@@ -35,7 +35,7 @@ def avaliar_ec_dfh_f_9_12():
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-		return classificarEcDfhF912(path)
+		return jsonify(classificarEcDfhF912(path).__dict__)
 	else:
 		return messageWrongFileFormat
 

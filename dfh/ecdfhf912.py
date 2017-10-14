@@ -7,17 +7,14 @@ pontoDeCorte = 0.5
 tolerancia = 0.05
 
 def classificarEcDfhF912(path):
-
 	img = prepararImagem(path)
-	
-	results = classificarItens(path)
-	
-	return "Resultado: "
-	
+	return classificarItens(path)
+		
 def classificarItens(img):
-	result = avaliarPenteado(img)
+	results = EcDfhF912Results()
+	results.penteado = avaliarPenteado(img)
 	
-	print(result)
+	return results
 	
 def prepararImagem(path):
 	img = cv2.imread(path)
@@ -36,3 +33,7 @@ def avaliarResultado(result):
 		return 0.0
 	else:
 		return -1.0
+		
+class EcDfhF912Results:
+    penteado = None
+	
