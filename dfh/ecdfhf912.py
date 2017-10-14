@@ -6,13 +6,33 @@ from dfh.itens.penteado.classificador import classificarPenteado
 pontoDeCorte = 0.5
 tolerancia = 0.05
 
+class ResultadoItem:
+	resultadoClassificacao = None
+	resultadoNormatizado = None
+	peso = None	
+
+class EcDfhF912Results:
+	adaptacaoCabelo = None
+	bocaCortada = None
+	dedosJuntos = None
+	dificuldadeIntegracao = None
+	enfaseFace = None
+	figuraBaixa = None
+	linhaPesada = None
+	linhaTremida = None
+	penteado = None
+	problemaRepresentacaoRoupa = None
+	transparencia = None
+
 def classificarEcDfhF912(path):
 	img = prepararImagem(path)
 	return classificarItens(path)
 		
 def classificarItens(img):
 	results = EcDfhF912Results()
-	results.penteado = avaliarPenteado(img)
+	penteado = ResultadoItem()
+	penteado.resultadoClassificacao = avaliarPenteado(img)
+	results.penteado = penteado
 	
 	return results
 	
@@ -33,7 +53,5 @@ def avaliarResultado(result):
 		return 0.0
 	else:
 		return -1.0
-		
-class EcDfhF912Results:
-    penteado = None
+	
 	

@@ -2,9 +2,11 @@ import os
 from flask import Flask, request, redirect, url_for, send_from_directory, jsonify
 from werkzeug.utils import secure_filename
 
-#from keras.models import model_from_json
 import cv2
 import numpy as np
+
+import jsonpickle
+
 
 from dfh.ecdfhf912 import *
 
@@ -35,7 +37,8 @@ def avaliar_ec_dfh_f_9_12():
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-		return jsonify(classificarEcDfhF912(path).__dict__)
+		return jsonpickle.encode(classificarEcDfhF912(path), unpicklable=False)
+		
 	else:
 		return messageWrongFileFormat
 
