@@ -10,18 +10,9 @@ class ResultadoItem:
 	pesoItem = None # peso deste item para a composição na composição da escala
 	escore = None # resultado final, quanto somar no escore final do desenho avaliado 
 
-class EcDfhF912Results:
-	adaptacaoCabelo = None
-	bocaCortada = None
-	dedosJuntos = None
-	dificuldadeIntegracao = None
-	enfaseFace = None
-	figuraBaixa = None
-	linhaPesada = None
-	linhaTremida = None
-	penteado = None
-	problemaRepresentacaoRoupa = None
-	transparencia = None
+class ResultadoDfh:
+	itens = None
+	escoreFinal = None
 	
 def avaliarResultadoItem(resultadoClassificacao, pesoItem, somarEscoreQuando):
 	item = ResultadoItem()
