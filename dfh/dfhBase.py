@@ -4,7 +4,20 @@ import numpy as np
 pontoDeCorteGlobal = 0.5
 toleranciaGlobal = 0.05
 
+dedosJuntosLabel = 'Dedos Juntos'
+adaptacaoCabeloLabel = 'Adaptação do Cabelo'
+bocaCortadaLabel = 'Boca Cortada'
+penteadoLabel = 'Penteado'
+figuraBaixaLabel = 'Figura Baixa'
+dificuldadeIntegracaoLabel = 'Dificuldade Integracao'
+enfaseFaceLabel = 'Ênfase da Face'
+linhaPesadaLabel = 'Linha Pesada'
+linhaTremidaLabel = 'Linha Tremida'
+problemaRepresentacaoRoupaLabel = 'Problema de Representação de Roupa'
+transparenciaLabel = 'Transparência'
+
 class ResultadoItem:
+	item = None
 	resultadoClassificacao = None #resultado emitido pelo pela ConvNet
 	resultadoAvaliado = None #A para ausente, P para presente, I para indeterminado
 	pesoItem = None # peso deste item para a composição na composição da escala
@@ -14,8 +27,9 @@ class ResultadoDfh:
 	itens = None
 	escoreFinal = None
 	
-def avaliarResultadoItem(resultadoClassificacao, pesoItem, somarEscoreQuando):
+def avaliarResultadoItem(nomeItem, resultadoClassificacao, pesoItem, somarEscoreQuando):
 	item = ResultadoItem()
+	item.item = nomeItem
 	item.pesoItem = pesoItem
 	item.resultadoClassificacao = resultadoClassificacao
 	item.resultadoAvaliado = avaliarResultado(resultadoClassificacao, pontoDeCorteGlobal, toleranciaGlobal)
