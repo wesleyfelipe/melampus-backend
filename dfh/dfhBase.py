@@ -17,7 +17,7 @@ problemaRepresentacaoRoupaLabel = 'Problema de Representação de Roupa'
 transparenciaLabel = 'Transparência'
 
 class ResultadoItem:
-	item = None
+	item = None #descricao do item
 	resultadoClassificacao = None #resultado emitido pelo pela ConvNet
 	resultadoAvaliado = None #A para ausente, P para presente, I para indeterminado
 	pesoItem = None # peso deste item para a composição na composição da escala
