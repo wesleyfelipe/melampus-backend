@@ -4,9 +4,7 @@ from werkzeug.utils import secure_filename
 
 import cv2
 import numpy as np
-
 import jsonpickle
-
 
 from dfh.ecdfhf912 import *
 
@@ -15,7 +13,6 @@ ALLOWED_EXTENSIONS = set(['bmp', 'png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -31,12 +28,16 @@ def avaliar_ec_dfh_f_9_12():
 	path = uploadFile(getFileFromRequest(request))
 	result = classificarEcDfhF912(path)
 	return prepareSuccessResponse(result)
+	
+	
+	
 		
 def getFileFromRequest(request):
 	return request.files['file']
 	
 def parseResultToJson(result):
-	return jsonpickle.encode(result, unpicklable=False)
+	responseJson = jsonpickle.encode(result, unpicklable=False)
+	return responseJson
 	
 def prepareSuccessResponse(body):
 	resp = make_response(parseResultToJson(body), 200)
@@ -74,5 +75,7 @@ def wrongFileFormatResponse():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-							   
-app.run(debug=True)
+
+   
+#app.run(debug=True)
+app.run()

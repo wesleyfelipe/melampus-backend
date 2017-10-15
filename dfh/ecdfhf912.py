@@ -11,7 +11,6 @@ from dfh.itens.linhatremida.classificador import *
 from dfh.itens.problemarepresentacaoroupa.classificador import *
 from dfh.itens.transparencia.classificador import *
 
-
 def classificarEcDfhF912(path):
 	return classificarItens(prepararImagem(path))
 		

@@ -31,8 +31,8 @@ def avaliarResultadoItem(nomeItem, resultadoClassificacao, pesoItem, somarEscore
 	item = ResultadoItem()
 	item.item = nomeItem
 	item.pesoItem = pesoItem
-	item.resultadoClassificacao = resultadoClassificacao
-	item.resultadoAvaliado = avaliarResultado(resultadoClassificacao, pontoDeCorteGlobal, toleranciaGlobal)
+	item.resultadoClassificacao = float(resultadoClassificacao)
+	item.resultadoAvaliado = avaliarResultado(item.resultadoClassificacao, pontoDeCorteGlobal, toleranciaGlobal)
 		
 	if(item.resultadoAvaliado == somarEscoreQuando):
 		item.escore = item.pesoItem
