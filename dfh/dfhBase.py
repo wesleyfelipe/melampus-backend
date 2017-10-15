@@ -16,6 +16,15 @@ linhaTremidaLabel = 'Linha Tremida'
 problemaRepresentacaoRoupaLabel = 'Problema de Representação de Roupa'
 transparenciaLabel = 'Transparência'
 
+instrucoes = {
+	"0" : "Sistema não possui confiança suficiente para emitir resultado final. Um especialista humano será acionado.",
+	"1" : "Sem indicação para avaliação.",
+	"2" : "Sugestão de entrevista.",
+	"3" : "Indicação para avaliação.",
+	"4" : "Necessidade de avaliação.",
+	"5" : "Avaliação necessária."
+}
+
 class ResultadoItem:
 	item = None #descricao do item
 	resultadoClassificacao = None #resultado emitido pelo pela ConvNet
@@ -26,6 +35,7 @@ class ResultadoItem:
 class ResultadoDfh:
 	itens = None
 	escoreFinal = None
+	instrucao = None
 	
 def avaliarResultadoItem(nomeItem, resultadoClassificacao, pesoItem, somarEscoreQuando):
 	item = ResultadoItem()
@@ -40,6 +50,16 @@ def avaliarResultadoItem(nomeItem, resultadoClassificacao, pesoItem, somarEscore
 		item.escore = 0
 		
 	return item
+	
+def calcularEscore(itens):
+	escore = 0
+	escoreIncerteza = 0
+	for i in itens:
+		if(i.resultadoAvaliado == 'I'):
+			escoreIncerteza += i.pesoItem
+		else:
+			escore += i.escore
+	return escore, escoreIncerteza
 	
 def prepararImagem(path):
 	img = cv2.imread(path)

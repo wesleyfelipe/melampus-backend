@@ -8,7 +8,7 @@
 
 def classificarLinhaTremida(img):
 
-	return 0.7
+	return 0.22
 
 	#resultClass = model.predict(img, batch_size=32, verbose=2)
 	

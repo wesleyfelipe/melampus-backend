@@ -28,6 +28,12 @@ def classificarItens(img):
 	resultado.itens.append(avaliarPenteado(img))
 	resultado.itens.append(avaliarProblemasRepresentacaoRoupa(img))
 	resultado.itens.append(avaliarTransparencia(img))
+	
+	escore, escoreIncerteza = calcularEscore(resultado.itens)
+	
+	resultado.escoreFinal = escore
+	resultado.instrucao = getInstrucaoFinal(escore, escoreIncerteza)
+	
 	return resultado
 	
 def avaliarAdaptacaoCabelo(img):
@@ -62,5 +68,25 @@ def avaliarProblemasRepresentacaoRoupa(img):
 	
 def avaliarTransparencia(img):
 	return avaliarResultadoItem(transparenciaLabel, classificarTransparencia(img), 2, 'P');
-
-
+	
+def getInstrucaoFinal(escore, escoreIncerteza):
+	idInstrucaoFinal = getIdInstrucao(escore)
+	idInstrucaoConfiancaBaixo = getIdInstrucao(escore - escoreIncerteza)
+	idInstrucaoConfiancaCima = getIdInstrucao(escore + escoreIncerteza)
+	
+	if(idInstrucaoFinal == idInstrucaoConfiancaBaixo and idInstrucaoFinal == idInstrucaoConfiancaCima):
+		return instrucoes[idInstrucaoFinal]
+	else:
+		return instrucoes["0"]
+	
+def getIdInstrucao(escore):
+	if(escore <= 2):
+		return "1"
+	elif(escore == 3):
+		return "2"
+	elif(escore == 4):
+		return "3"
+	elif(escore == 5):
+		return "4"
+	else:
+		return "5"
