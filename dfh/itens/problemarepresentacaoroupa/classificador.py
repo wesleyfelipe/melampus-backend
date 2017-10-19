@@ -6,4 +6,4 @@ from dfh.itens.models import *
 def classificarProblemaRepresentacaoRoupa(img):
 	#result = problemaRepresentacaoRoupaModel.predict(img, batch_size=15, verbose=2)
 	#return result[0][0]
-	return 0.5
+	return 0.1

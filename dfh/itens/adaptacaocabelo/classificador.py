@@ -8,7 +8,7 @@
 
 def classificarAdaptacaoCabelo(img):
 
-	return 0.7
+	return 1.0
 
 	#resultClass = model.predict(img, batch_size=32, verbose=2)
 	

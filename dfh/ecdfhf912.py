@@ -32,7 +32,9 @@ def classificarItens(img):
 	escore, escoreIncerteza = calcularEscore(resultado.itens)
 	
 	resultado.escoreFinal = escore
-	resultado.instrucao = getInstrucaoFinal(escore, escoreIncerteza)
+	idInstrucao, instrucao = getInstrucaoFinal(escore, escoreIncerteza)
+	resultado.instrucao = instrucao
+	resultado.idInstrucao = idInstrucao
 	
 	return resultado
 	
@@ -75,9 +77,9 @@ def getInstrucaoFinal(escore, escoreIncerteza):
 	idInstrucaoConfiancaCima = getIdInstrucao(escore + escoreIncerteza)
 	
 	if(idInstrucaoFinal == idInstrucaoConfiancaBaixo and idInstrucaoFinal == idInstrucaoConfiancaCima):
-		return instrucoes[idInstrucaoFinal]
+		return idInstrucaoFinal, instrucoes[idInstrucaoFinal]
 	else:
-		return instrucoes["0"]
+		return 0, instrucoes["0"]
 	
 def getIdInstrucao(escore):
 	if(escore <= 2):

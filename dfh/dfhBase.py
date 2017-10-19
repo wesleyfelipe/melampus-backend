@@ -17,7 +17,7 @@ problemaRepresentacaoRoupaLabel = 'Problema de Representação de Roupa'
 transparenciaLabel = 'Transparência'
 
 instrucoes = {
-	"0" : "Sistema não possui confiança suficiente para emitir resultado final. Um especialista humano será acionado.",
+	"0" : "Sistema não possui confiança suficiente para emitir resultado final. Um especialista humano será consultado.",
 	"1" : "Sem indicação para avaliação.",
 	"2" : "Sugestão de entrevista.",
 	"3" : "Indicação para avaliação.",
@@ -36,6 +36,7 @@ class ResultadoDfh:
 	itens = None
 	escoreFinal = None
 	instrucao = None
+	idInstrucao = None
 	
 def avaliarResultadoItem(nomeItem, resultadoClassificacao, pesoItem, somarEscoreQuando):
 	item = ResultadoItem()
